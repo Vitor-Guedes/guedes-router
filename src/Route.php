@@ -41,7 +41,7 @@ class Route
             }
             throw new Exception("Não foi encontrado a função: $action na class $controller");
         }
-        throw new Exception('Não Foi possivel instanciar a class: $controller');
+        throw new Exception("Não Foi possivel instanciar a class: $controller");
     }
 
     public function setNamespace(string $namespace)

@@ -51,9 +51,12 @@ class Router
                 $group->mergeRoutes();
             }
             $groupRoutes = $group->getRoutes();
+            $namespace = $group->getNamespace();
             foreach ($groupRoutes as $http => $routes) {
                 foreach ($routes as $route) {
-                    $this->addRoute($http, $route);
+                    ($namespace)
+                        ? $this->addRoute($http, $route)->setNamespace($namespace)
+                            : $this->addRoute($http, $route);
                 }
             }
         }

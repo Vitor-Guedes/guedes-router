@@ -6,6 +6,7 @@ class GroupRouter extends Router
 {
     protected $prefix;
     protected $callback;
+    protected $namespace;
     protected $parentGroupPrefix;
 
     public function __construct(string $prefix, \closure $callback)
@@ -41,5 +42,21 @@ class GroupRouter extends Router
     private function getPrefixGroup(string $path)
     {
         return "{$this->prefix}{$path}";
+    }
+
+    public function setNamespace(string $namespace)
+    {
+        $this->namespace = $namespace;
+        return $this;
+    }
+
+    public function getNamespace()
+    {
+        return $this->namespace;
+    }
+
+    public function hasNamespace()
+    {
+        return !empty($this->namespace);
     }
 }
