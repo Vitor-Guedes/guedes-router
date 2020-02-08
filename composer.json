@@ -1,0 +1,17 @@
+{
+    "name": "vithally/www",
+    "description": "",
+    "authors": [
+        {
+            "name": "Vitor Guedes",
+            "email": "vtrf2.0@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Src\\": "src"
+        }
+    }
+}
