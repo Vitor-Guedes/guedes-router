@@ -5,15 +5,16 @@ namespace GuedesRouter;
 use GuedesRouter\Route;
 use GuedesRouter\Traits\Verbs;
 
-/**
- * @method object get(string $path, $closure)
- * @method object post(string $path, $closure)
- * @method object put(string $path, $closure)
- * @method object delete(string $path, $closure)
- */
 class RouterCollection
 {
     use Verbs;
+
+    protected $separator;
+
+    public function __construct(string $separator = '@')
+    {
+        $this->separator = $separator;
+    }
 
     /**
      * Collection of routes
@@ -33,7 +34,7 @@ class RouterCollection
      */
     protected function on(string $method, string $path, $callable) : Route
     {
-        $route = new Route($path, $callable);
+        $route = new Route($path, $callable, $this->separator);
         $this->routes[$method][spl_object_hash($route)] = $route;
         return $route;
     }
