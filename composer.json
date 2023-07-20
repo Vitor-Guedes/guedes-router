@@ -1,5 +1,5 @@
 {
-    "name": "vithally/www",
+    "name": "guedes/router",
     "description": "",
     "authors": [
         {
@@ -10,8 +10,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "App\\": "app",
-            "Src\\": "src"
+            "GuedesRouter\\": "src/"
         }
     }
 }
