@@ -32,7 +32,7 @@ class App
     {
         $collection = $this->routerCollection->getRoutes($this->method);
         foreach($collection as $route) {
-            if ($route->match($route)) {
+            if ($route->match($this->uri)) {
                 return $route->resolve();
             }
         }
@@ -42,7 +42,12 @@ class App
     public function __call($name, $arguments)
     {
         if (method_exists($this->routerCollection, $name)) {
-            return $this->routerCollection->$name($arguments);
+            return call_user_func_array([
+                    $this->routerCollection,
+                    $name
+                ], 
+                $arguments
+            );
         }
         return false;
     }
