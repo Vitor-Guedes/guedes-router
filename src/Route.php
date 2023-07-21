@@ -135,7 +135,7 @@ class Route
         if (class_exists($controller)) {
             $instance = new $controller();
             if (method_exists($instance, $function)) {
-                return $instance->$function($parameters);
+                return call_user_func_array([$instance, $function], $parameters);
             }
             throw new Exception("Metodo não existe na Controller: {$controller}.");
         }
