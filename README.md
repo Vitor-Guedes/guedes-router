@@ -81,11 +81,11 @@ $collection->get('/about', function () {
 })
 
 $requestUri = $_SERVER['REQUEST_URI'];
-$method = $_SERVER['REQUEST_METHOD'];
+$requestMethod = $_SERVER['REQUEST_METHOD'];
 
 $matchedRoute = null;
-foreach ($this->routerCollection->getRoutes($method) as $route) {
-    if ($route->match($uri)) {
+foreach ($this->routerCollection->getRoutes($requestMethod) as $route) {
+    if ($route->match($requestUri)) {
         $matchedRoute = $route;
         break ;
     }
